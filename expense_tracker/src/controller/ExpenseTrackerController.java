@@ -52,6 +52,25 @@ public class ExpenseTrackerController {
     return true;
   }
 
+  public boolean undoTransaction(int[] transactions) {
+    Transaction t = model.getTransactions().get(transactions[0]);
+    model.removeTransaction(t);
+    refresh();
+    return true;
+  }
+
+  public boolean showUndo(){
+    List<Transaction> transactions = model.getTransactions();
+    System.out.println(transactions.size());
+    int len = transactions.size();
+    if(len>0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   public void applyFilter() {
     //null check for filter
     if(filter!=null){

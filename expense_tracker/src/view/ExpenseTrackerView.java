@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
 import model.Transaction;
+import controller.ExpenseTrackerController;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class ExpenseTrackerView extends JFrame {
 
   private JTextField amountFilterField;
   private JButton amountFilterBtn;
+
+  private JButton undoBtn;
 
   
 
@@ -61,6 +64,8 @@ public class ExpenseTrackerView extends JFrame {
     JLabel amountFilterLabel = new JLabel("Filter by Amount:");
     amountFilterField = new JTextField(10);
     amountFilterBtn = new JButton("Filter by Amount");
+
+    undoBtn = new JButton("Undo Transaction");
   
 
   
@@ -75,6 +80,8 @@ public class ExpenseTrackerView extends JFrame {
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(amountFilterBtn);
     buttonPanel.add(categoryFilterBtn);
+    buttonPanel.add(undoBtn);
+    
   
     // Add panels to frame
     add(inputPanel, BorderLayout.NORTH);
@@ -142,6 +149,10 @@ public class ExpenseTrackerView extends JFrame {
         // You can show an error message or return a default value
         return 0.0; // Default value (or any other appropriate value)
     }
+  }
+
+  public JButton getUndoButton() {
+    return undoBtn;
   }
 
   public void refreshTable(List<Transaction> transactions) {
